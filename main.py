@@ -140,8 +140,8 @@ def display_book_info():
         book_to_display : Book = handle_search_result(library.search_book(search_query))
 
         print("Book Title: " + book_to_display.title)
-        print("Book Author: " + book.author_name)
-        print("Book Publication Year: " + book.publication_year)
+        print("Book Author: " + book_to_display.author_name)
+        print("Book Publication Year: " + book_to_display.publication_year)
 
         done = True
         user_input()

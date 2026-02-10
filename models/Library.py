@@ -1,6 +1,6 @@
 from models.Book import Book
 from typing import TypedDict
-from misc.libdb import AuthorDict, TitleDict, PubYearDict, BookDict, BookCountDict 
+from misc.libdb import BookDict, BookCountDict 
 
 class Library():
     
@@ -8,9 +8,6 @@ class Library():
 
     def __init__(self):
         self.book_dict : BookDict = {}
-        self.author_dict : AuthorDict = {}
-        self.title_dict : TitleDict = {}
-        self.pubyear_dict : PubYearDict = {}
         self.book_count_dict : BookCountDict = {}
         pass
 
@@ -28,24 +25,6 @@ class Library():
             self.book_dict[book_id] = book
             
             self.book_count_dict[book_id] = {"max" : 1, "stock" : 1}
-
-            author_key : str = book.get_author_key()
-            if author_key in self.author_dict:
-                list(self.author_dict[author_key]).append(book)
-            else:
-                self.author_dict[author_key] = [book]
-
-            title_key : str = book.get_title_key()
-            if title_key in self.title_dict:
-                list(self.title_dict[title_key]).append(book)
-            else:
-                self.title_dict[title_key] = [book]
-
-            pubyear_key : str = book.get_pubyear_key()
-            if pubyear_key in self.pubyear_dict:
-                list(self.pubyear_dict[pubyear_key]).append(book)
-            else:
-                self.pubyear_dict[pubyear_key] = [book]
         pass
     
     def borrow_book(self, book_id : str) -> Book:
