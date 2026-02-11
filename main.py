@@ -52,6 +52,7 @@ def user_input():
         print("[3] Return Book")
         print("[4] Display Book Info")
         print("[5] Inquire Book Availability")
+        print("[6] Exit")
         done = handle_input(input("Please the number of the action you want to do: "))
     pass
 
@@ -71,6 +72,8 @@ def handle_input(input : str) -> bool:
             return True
         case "5":
             inquire_book_availability()
+            return True
+        case "6":
             return True
         case _:
             print("Invalid input, please try again")
